@@ -1,0 +1,395 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agency - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'draken/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'draken/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="{% static 'draken/css/agency.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll logga" href="#page-top">
+                	<img style="width:192px; margin-top: 2px; "
+             			src={% static "draken/img/draken2.jpg" %} alt="My image"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Projekt</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Om oss</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team">Kontakt</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text start_img">
+                <div class="intro-heading">Välkommen till Draken!</div>
+                <div class="intro-lead-in">Arkitekter i Stockholm</div>
+                
+               
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Projekt</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row">
+
+            {% for project in projects %} <!-- skriver django kod i html kod för att länka till projekten -->
+            	<div class="col-md-4 col-sm-6 col-xs-12 portfolio-item">
+                    <a href="#portfolioModal{{project.id}}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src= "{{ project.project_image.url }}" class="img-responsive bild" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ project.project_title }}</h4> <!-- project är objektet, hämtar variablem titel -->
+                       
+                    </div>
+                </div>
+
+            {% endfor %}
+            	<!--
+
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Round Icons</h4>
+                        <p class="text-muted">Graphic Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Startup Framework</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/treehouse.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Treehouse</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/golden.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Golden</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/escape.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Escape</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Dreams</h4>
+                        <p class="text-muted">Website Design</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+        	<h2 class="section-heading text-center">Om oss</h2>
+            <h3 class="section-subheading text-muted text-center">Draken Arkitektur AB är ett mindre arkitektföretag med kontor i Gamla stan</h3>
+            <div class="row">
+                <div class="col-lg-12 col-lg-offset-1">
+                   
+            
+           
+                	<div class="col-lg-5 ml-auto">
+                		<p>
+                		Vi arbetar med projekt med varierande inriktning och
+						storlek, huvudsakligen inom följande områden: </p> 
+						<ul style="line-height: 1.75;font-size:16px">
+							<li>Restaurering av historisk bebyggelse</li>
+							<li>Sjukvårdslokaler i privat regi</li>
+							<li>Ombyggnad och inredning av kontor</li>
+							<li>Restaurang- och konferenslokaler</li>
+							<li>Bostäder i olika former</li> 
+							<li>Skolor och idrottshallar</li>
+							<li>Detaljhandel och industri</li> 
+							<li>Kulturella och sociala projekt</li>
+						</ul>
+						<p>Våra uppdragsgivare är allt från små till stora företag, stiftelser, kommuner och privatpersoner, varav många är återkommande beställare som vi har haft ett långvarigt samarbete med.</p>
+						
+                	</div>
+            		<div class="col-lg-5 mr-auto">
+                		<p>
+                		
+
+						Vår vilja och målsättning är att medverka och ha en aktiv roll från tidigt idé- och programarbete, fram genom hela projektet, till inredning och inflyttning. Med det samarbete vi har med ett antal arkitekter, tekniska konsulter och projektledare tillgodoser vi de önskemål och krav på resurser och övergripande helhetssyn som är förutsättningen för ett väl genomfört projekt.<br><br>
+
+						Läs mer om vår arkitektursyn, intentioner och arbetssätt på undersidorna för respektive projektområde.
+
+
+                		</p>
+                	</div>
+                
+                
+
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="bg-light-gray">
+        <div class="container">
+           <h2 class="section-heading text-center">Kontakt</h2>
+           <h3 class="section-subheading text-muted text-center">Här är vi arkitekter som jobbar på Draken Arkitektur?</h3>
+                
+           
+            <div class="row">
+            	<div class="col-lg-12">
+                	<div class="col-sm-4">
+                   		<div class="team-member">
+                        	
+                       	 <h4>Magnus Barr</h4>
+                        	<p class="text-muted">Arkitekt SAR/MSA</p>
+                        	<div class ="mail">
+                        	<a href="tel:+46707558221">070-7558221</a>
+                      		<a href="mailto:magnus.barr@drakenarkitektur.se">magnus.barr@drakenarkitektur.se</a> 
+                      		</div>
+
+							
+                       
+                   	 	</div>
+               		</div>
+                	<div class="col-sm-4">
+                   		<div class="team-member">
+                        	
+                        	<h4>Jakob Nobel</h4>
+                        	<p class="text-muted">Arkitekt MSA</p>
+                        	<div class ="mail">
+                        	<a href="tel:+46707466494">070-7466494</a>
+                      		<a href="mailto:jakob.nobel@drakenarkitektur.se">jakob.nobel@drakenarkitektur.se</a> 
+                      		</div>
+                        
+                    	</div>
+                	</div>
+                	<div class="col-sm-4">
+                    	<div class="team-member">
+                        	
+                        	<h4>Stefan Karlsson</h4>
+                        	<p class="text-muted">Arkitekt MSA</p>
+                        	<div class ="mail">
+                        	<a href="tel:+46702349800">070-2349800</a>
+                      		<a href="mailto:stefan.karlsson@drakenarkitektur.se">stefan.karlsson@drakenarkitektur.se</a> 
+                      		</div>
+                        
+                    	</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center adress">
+                    <p class="large text-muted">Draken Arkitektur AB, Skeppsbron 28 111 30 Stockholm, <a href="tel:+468233700">08-233700, </a><a href="mailto:www.drakenarkitektur.se">www.drakenarkitektur.se</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Your Website 2016</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% for project in projects %}
+
+   <div class="portfolio-modal modal fade" id="portfolioModal{{project.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body bakgrund">
+                                <!-- Project Details Go Here -->
+                                <h2>{{project.project_title}}</h2>
+                               
+                                <!--<img class="img-responsive img-centered" src="{{ project.project_image.url }}"  alt=""> -->
+                                {% autoescape off %}
+                                <p>{{project.project_text}}</p>
+                                {% endautoescape %}
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+    <!-- jQuery -->
+    <script src="{% static 'draken/vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'draken/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'draken/js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'draken/js/contact_me.js' %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'draken/js/agency.min.js' %}"></script>
+
+</body>
+
+</html>
